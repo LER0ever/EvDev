@@ -2,6 +2,7 @@
 LER0ever's Personal Dockerized Development Environment
 
 ## Awesomeness included
+- Alpine Edge
 - Full-Featured EverVim (with all of supported languages) running on latest Neovim
 - Preconfigured Tmux and Zsh
 - Toolchains for
@@ -13,7 +14,7 @@ LER0ever's Personal Dockerized Development Environment
     - Python 2/3
     - C# Mono
     - Lua(jit)
-- Spacemacs (on latest emacs)
+- Full-Featured Spacemacs (on latest emacs)
 - FRP
 
 ## Usage
