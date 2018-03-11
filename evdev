@@ -1,11 +1,12 @@
 #!/bin/bash
 
 main() {
+  [  -z "$EVDEV_NAME"  ] && export EVDEV_NAME="EvDev_Container" || echo "Starting $EVDEV_NAME"
   docker run \
       -it \
       --rm \
-      --name "EvDev-Container" \
-      --hostname "EvDev-Container" \
+      --name "$EVDEV_NAME" \
+      --hostname "$EVDEV_NAME" \
       --volume "$PWD":/workdir \
       --volume "$HOME":/home/host \
       --volume ~/.ssh/id_rsa:/home/everette/.ssh/id_rsa \
