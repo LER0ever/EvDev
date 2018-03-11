@@ -19,7 +19,7 @@ RUN apk add --update-cache \
 RUN apk add --update-cache \
     bash zsh less tmux ncurses \
     the_silver_searcher p7zip \
-    git htop neofetch
+    git htop neofetch shadow
 
 # Python
 RUN apk add --update-cache \
