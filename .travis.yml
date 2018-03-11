@@ -1,0 +1,15 @@
+language: generic
+sudo: required
+services:
+- docker
+install:
+- docker version
+script:
+- docker build --compress --pull --tag local/evdev .
+after_success:
+- '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
+  login -u="$DOCKER_HUB_USERNAME" -p="$DOCKER_HUB_PASSWORD" && docker push "LER0ever/EvDev"'
+env:
+  global:
+  - secure: jkjE/HHruDt8JX5fwVTUxglmvMoQHQIWgkBX73bCBHpfVPksmjTgDPEKFI/BbbXcSd39X2f3+RxkokaARjHwz9j3P5H34jhERh7YndJR9qzwqW9urdp1u1ydF3q/1K0QT7mQl1BHLI3cOQ20EswLOtCYO6i4ejCIsCmIg9Oj+t9sdGWkMPrHdfv6EgGrH+JlmtUtVquBhOKw6HoVDlhH392nqpPDVocbukQjcMNjyr+zEUqDZz5iHyo8QbpK1cr7ydNihDz56tPZQiwbKGMRI2h/3RcaLqUJvsiqQN7CjULoWFlec7oJwJCNwsdKp2ITyL9YlJyJlUjxWbX/8OhGOQ8Tl6KOKZElGSCzc6eSWz8U675h/oe3d759uGnm9y4dM7sIUWRW73bHPIKWhOVhQtOD7okZVkw7R3+Bjp+zYU8EpGTgsdDEo19xnLJWJgMCzp+8B6e1ZPXJT/PbkeVeV1mFr+Cok+1Tvcd+JNXZUjFzkLbw5OKnQqO9WJR0KIGaruB50JEeY+fLHiWxEYO9LQRRoGLkVxNTLTtrHsiYKPuN1TY/LFc4VECMZZAvu5VgSyYFpBzXK2h2Cbz5J9e9JMCh7BhGewP9cfiTkxjn2PhZW0OCom8dmB4t5jG71hzBhLMz++0CqdpShqHWYgtNH/RzuuhOAAqt1vc9eaB+P3Q=
+  - secure: dJ2GxUyvop3ANSvE0yOgOk96Hs3St+9yQqoU+B9Btp3T9EIci5pZWzP5eFiDv5oYp4Yj5sSYdXbGSB53yaHQXrRZuUcyRNxb/jZCt0LGtJR7FdLZFx8CdHS87Qu0ETIR1tzSeZ8N8r8yiBjm4WqW2USf3nW0FUCRIMM2nzGfCcd3qRX/ez/0XcI1z014DnONy8l33v9YDiuD3skjIUpexY4o3UeSXvMEpdyKN+oGoHhBujuUoM7A2eid1SIiHNd+KxWSmfxpvWAhP3BOhWhGtCzE1TlL1qJDYQDJHAmKy6OPMVIZJv4076s7JMaGiJNy8B6pAivrLkkjKzja90UHaBM32AtDMnziRd/dqZgB1SqLWyq6Awo9F6E6wRnFG1GpzUnyzuN1+GIBw7TnFtCd5XPdSDPXuBNNy8LDmq/0K0H1yUo3VETcjl25QJrnh4wdwwNkx+/Peo72cOyX84cDSqIcm+/pNqw3wjSiMmh/xrMvAZAxBpdV/L+jz6UW8FtLELzeER9FIaJAFMqk9LcRap8cin1ufrauCPt8nDI4Jdgije0eyI1xI2p5RleLfj3BTw+Daswc07Uu3ZnXyI0O3r1WpoTEfYkxnPlQC2GiaQlqWkHRKRaX2qra+GbVa/Vgf129gYN8mEr5FjRWEP+GwtuVUuzechMeJsqF1cLMpu8=
