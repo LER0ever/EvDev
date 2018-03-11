@@ -3,10 +3,6 @@ MAINTAINER Everette Rong (https://rongyi.blog)
 ENV HOSTNAME EvDev-Container
 
 # ENV DEBIAN_FRONTEND noninteractive
-
-ENV GLOBAL_CONFIG_HOME /usr/local/etc
-ENV GLOBAL_DATA_HOME /usr/local/share
-ENV GLOBAL_CACHE_HOME /usr/local/cache
 ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
 
 # User with temporary password
