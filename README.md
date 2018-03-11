@@ -32,8 +32,26 @@ evdev
 # Enjoy
 ```
 
+#### Create derivatives
+```dockerfile
+FROM ler0ever/evdev:latest
+MAINTAINER Your Name <you@riseup.net>
+
+# Rename evdev
+RUN usermod -m -l your_user_name -d /home/your_user_name evdev
+
+# Add packages
+RUN apk add --update-cache \
+    fish
+
+# Override dotfiles
+COPY vim/EverVim.vimrc $HOME/.EverVim.vimrc
+
+# ...
+```
+
 ## [Docker Hub](https://hub.docker.com/r/ler0ever/evdev/)
-The image is built daily using cronjob, and automatically push to DockerHub: [LER0ever/EvDev](https://hub.docker.com/r/ler0ever/evdev/), available to everyone.
+The image is built daily using cronjob, and automatically pushed to DockerHub: [LER0ever/EvDev](https://hub.docker.com/r/ler0ever/evdev/), available to everyone.
 
 ## License
 EvDev is licensed under the term of **Apache 2.0**  
