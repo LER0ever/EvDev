@@ -21,8 +21,8 @@ LER0ever's Personal Dockerized Development Environment
 #### Build
 ```
 # docker version
-./build-evdev
-cp evdev /usr/local/bin
+docker pull ler0ever/evdev
+# put evdev into /usr/loca/bin
 ```
 
 #### Use

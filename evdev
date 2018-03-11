@@ -9,7 +9,7 @@ main() {
       --volume "$PWD":/workdir \
       --volume "$HOME":/home/host \
       --volume ~/.ssh/id_rsa:/home/everette/.ssh/id_rsa \
-      local/evdev "$@"
+      ler0ever/evdev "$@"
 }
 
 main "$@"

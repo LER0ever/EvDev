@@ -6,4 +6,4 @@ docker run ^
       --hostname "EvDev-Container" ^
       --volume %cd%:/workdir ^
       --volume %HOMEDRIVE%%HOMEPATH%:/home/host ^
-      local/evdev %*
+      ler0ever/evdev %*
