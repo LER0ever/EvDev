@@ -8,4 +8,4 @@ script:
 - docker build --compress --pull --tag local/evdev .
 after_success:
 - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
-  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "LER0ever/EvDev"'
+  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
