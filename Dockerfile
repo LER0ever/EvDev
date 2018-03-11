@@ -120,7 +120,7 @@ RUN curl -sLf https://raw.githubusercontent.com/LER0ever/EverVim/master/Boot-Eve
   && sudo chown everette:everette $HOME/.EverVim.vimrc \
   && nvim --headless +PlugInstall +qa &> /dev/null
 RUN cd $HOME/.EverVim/bundle/YouCompleteMe \
-    && python3 install.py --clang-completer --system-libclang --go-completer --rust-completer --js-completer --cs-completer >/dev/null 2>&1
+    && python3 install.py --clang-completer --system-libclang --go-completer --rust-completer --js-completer --cs-completer
 
 # Spacemacs
 COPY emacs/spacemacs $HOME/.spacemacs
