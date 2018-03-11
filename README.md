@@ -38,7 +38,7 @@ FROM ler0ever/evdev:latest
 MAINTAINER Your Name <you@riseup.net>
 
 # Rename evdev
-RUN usermod -m -l your_user_name -d /home/your_user_name evdev
+RUN usermod -m -l your_user_name -d /home/your_user_name everette
 
 # Add packages
 RUN apk add --update-cache \

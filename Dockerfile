@@ -1,15 +1,15 @@
 FROM alpine:edge
-MAINTAINER evdev Rong (https://rongyi.blog)
+MAINTAINER Everette Rong (https://rongyi.blog)
 ENV HOSTNAME EvDev-Container
 
 # ENV DEBIAN_FRONTEND noninteractive
 ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
 
 # User with temporary password
-RUN adduser -s /bin/zsh -D evdev && \
+RUN adduser -s /bin/zsh -D everette && \
     echo "root:33554432!" | chpasswd &&\
-    echo "evdev:33554432!" | chpasswd && \
-    echo "evdev ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    echo "everette:33554432!" | chpasswd && \
+    echo "everette ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # base
 RUN apk add --update-cache \
@@ -100,10 +100,10 @@ COPY bin /usr/local/bin
 RUN chmod -R 777 /usr/local
 
 # ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
-ENV HOME /home/evdev
+ENV HOME /home/everette
 ENV XDG_CONFIG_HOME  $HOME/.config
-RUN chown -R evdev:evdev $HOME
-USER evdev
+RUN chown -R everette:everette $HOME
+USER everette
 
 # git
 COPY git/gitconfig $HOME/.gitconfig
@@ -113,7 +113,7 @@ COPY git/gitignore_global $HOME/.gitignore_global
 COPY vim/EverVim.vimrc $HOME/.EverVim.vimrc
 RUN curl -sLf https://raw.githubusercontent.com/LER0ever/EverVim/master/Boot-EverVim.sh | bash \
   && echo -e "Installing EverVim Distribution ..." \
-  && sudo chown evdev:evdev $HOME/.EverVim.vimrc \
+  && sudo chown everette:everette $HOME/.EverVim.vimrc \
   && nvim --headless +PlugInstall +qa &> /dev/null
 RUN cd $HOME/.EverVim/bundle/YouCompleteMe \
     && python3 install.py --clang-completer --system-libclang --go-completer --rust-completer --js-completer --cs-completer
@@ -121,10 +121,10 @@ RUN cd $HOME/.EverVim/bundle/YouCompleteMe \
 # Spacemacs
 COPY emacs/spacemacs $HOME/.spacemacs
 RUN git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d \
-  && sudo chown evdev:evdev $HOME/.spacemacs \
+  && sudo chown everette:everette $HOME/.spacemacs \
   && echo -e "Installing Spacemacs ..." \
-  && emacs -nw -batch -u "evdev" -q -kill >/dev/null 2>&1 \
-  && emacs -nw -batch -u "evdev" -q -kill >/dev/null 2>&1
+  && emacs -nw -batch -u "everette" -q -kill >/dev/null 2>&1 \
+  && emacs -nw -batch -u "everette" -q -kill >/dev/null 2>&1
 
 # go
 ENV GOPATH $HOME/Code/Go
