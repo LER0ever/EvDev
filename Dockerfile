@@ -163,9 +163,6 @@ COPY vim/ctags $HOME/.ctags
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
  && ~/.fzf/install --bin
 
-RUN mkdir -p $XDG_CONFIG_HOME/nvim/spell \
-  && curl --silent ftp://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl -o $XDG_CONFIG_HOME/nvim/spell/en.utf-8.spl
-
 RUN mkdir -p $XDG_CONFIG_HOME/nvim/shada && touch $XDG_CONFIG_HOME/nvim/shada/main.shada
 
 ENV PATH "$PATH:$HOME/.fzf/bin"
