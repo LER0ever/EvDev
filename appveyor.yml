@@ -1,0 +1,12 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+
+build_script:
+  - docker build --squash --compress --pull --tag local/evdev .
+
+after_build:
+  - docker save -o evdev.tar.gz local/evdev
+
+artifacts:
+  - path: '*.tag.gz'
+

@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+*.tgz
+
+# dotenv environment variables file
+.env

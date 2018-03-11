@@ -1,0 +1,71 @@
+[user]
+	name = LER0ever
+	email = etasry@gmail.com
+[core]
+	email = etasry@gmail.com
+	user = Everette Rong
+	editor = /usr/bin/nvim
+  	autocrlf = input
+	excludesfile = ~/.gitignore_global
+[alias]
+	amend = commit --amend -C HEAD
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+	changes = diff --name-status -r
+	dad = !curl https://icanhazdadjoke.com/ && git add
+	l = log --oneline --decorate
+	last = log -2 --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%n %C(white)%s%C(reset)\"
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ls-ignored = ls-files --exclude-standard --ignored --others
+	merge = merge --no-ff
+	msg = commit --allow-empty -m
+	remote-status = "!git log HEAD..origin/$(git rev-parse --abbrev-ref HEAD | sed -e 's/heads\\///') --oneline --decorate=short -3"
+	short = status --short --branch
+	sl = shortlog
+	gl = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+	tree = log --graph --pretty=oneline --decorate
+	undo = reset --soft HEAD^
+	unwatch = update-index --assume-unchanged
+	watch = update-index --no-assume-unchanged
+	wd = diff --color-words
+	wds = diff --color-words --staged
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	interactive = auto
+	ui = true
+	pager = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[help]
+	autocorrect = 0
+[apply]
+	whitespace = nowarn
+[mergetool]
+	keepBackup = false
+  prompt = false
+[push]
+	default = simple
+[difftool]
+	prompt = false
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

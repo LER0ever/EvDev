@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+main(){
+  local cmd="$@"
+  echo "$cmd"
+  until sh -c "$cmd"; do
+    echo -n "."
+    sleep 5
+  done
+  echo ""
+}
+main "$@"

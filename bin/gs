@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+print_header() {
+  local gray='\033[0;37m'
+  local dark_gray='\033[0;90m'
+  local no_color='\033[0;0m'
+  local header="$1"
+  local h="${gray}$header${no_color}"
+  local s_b="${dark_gray}[${no_color}"
+  local e_b="${dark_gray}]${no_color}"
+  echo -e "${no_color}$s_b $h $e_b"
+}
+
+print_sub_header() {
+  local dark_gray='\033[0;90m'
+  local no_color='\033[0;0m'
+  local header="$1"
+  local h="${dark_gray}$header${no_color}"
+  local br="${dark_gray} -- ${no_color}"
+  echo -e "${no_color}$br $h $br"
+}
+
+main() {
+  print_sub_header "git status --short --branch"
+  git status --short --branch
+}
+
+main "$@"

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+main(){
+  awk '{print $NF}'
+}
+main $@

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+main() {
+  docker run \
+      -it \
+      --rm \
+      --name "EvDev-Container" \
+      --hostname "EvDev-Container" \
+      --volume "$PWD":/workdir \
+      --volume "$HOME":/home/host \
+      --volume ~/.ssh/id_rsa:/home/everette/.ssh/id_rsa \
+      local/evdev "$@"
+}
+
+main "$@"
