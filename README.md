@@ -33,6 +33,8 @@ evdev
 ```
 
 #### Create derivatives
+Make sure you changed all the personal info before put this into production, for example:
+
 ```dockerfile
 FROM ler0ever/evdev:latest
 MAINTAINER Your Name <you@riseup.net>

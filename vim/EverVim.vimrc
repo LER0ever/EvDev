@@ -46,6 +46,10 @@ let g:evervim_airline_theme="wombat"
 imap jj <Esc>
 imap kk <Esc>
 
+" Header constants for generating and updating the comment header
+let g:header_field_author = 'LER0ever'
+let g:header_field_author_email = 'etasry@gmail.com'
+
 " Enable smooth scrolling
 let g:evervim_smooth_scrolling = 1
 
