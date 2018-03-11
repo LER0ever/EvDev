@@ -4,6 +4,8 @@ services:
 - docker
 install:
 - docker version
+- echo $DOCKER_USERNAME
+- echo $DOCKER_PASSWORD
 script:
 - docker build --compress --pull --tag local/evdev .
 after_success:
