@@ -4,10 +4,8 @@ services:
 - docker
 install:
 - docker version
-- echo $DOCKER_USERNAME
-- echo $DOCKER_PASSWORD
 script:
-- docker build --compress --pull --tag local/evdev .
+- docker build --compress --pull --tag ler0ever/evdev .
 after_success:
 - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
   login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
