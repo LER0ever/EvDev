@@ -22,7 +22,7 @@ LER0ever's Personal Dockerized Development Environment
 ```
 # docker version
 docker pull ler0ever/evdev
-# put evdev into /usr/loca/bin
+# put evdev into /usr/local/bin
 ```
 
 #### Use
@@ -31,6 +31,9 @@ cd your-workspace
 evdev
 # Enjoy
 ```
+
+## [Docker Hub](https://hub.docker.com/r/ler0ever/evdev/)
+The image is built daily using cronjob, and automatically push to DockerHub: [LER0ever/EvDev](https://hub.docker.com/r/ler0ever/evdev/), available to everyone.
 
 ## License
 EvDev is licensed under the term of **Apache 2.0**  
