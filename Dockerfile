@@ -26,7 +26,7 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages ctags
+    man man-pages ctags gdb
 
 # Python
 RUN apk add --update-cache \
