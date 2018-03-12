@@ -2,11 +2,11 @@ FROM alpine:edge
 MAINTAINER Everette Rong (https://rongyi.blog)
 ENV HOSTNAME EvDev-Container
 
-# ENV DEBIAN_FRONTEND noninteractive
-ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
-
 # Record the current image's build time
 RUN echo -e "EvDev Build Start: $(date)" >> /etc/EvDev.prop
+
+# ENV DEBIAN_FRONTEND noninteractive
+ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
 
 # User with temporary password
 RUN adduser -s /bin/zsh -D everette && \
