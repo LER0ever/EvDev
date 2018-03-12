@@ -167,7 +167,7 @@ RUN mkdir -p $XDG_CONFIG_HOME/nvim/shada && touch $XDG_CONFIG_HOME/nvim/shada/ma
 ENV PATH "$PATH:$HOME/.fzf/bin"
 
 # Record the current image's build time
-RUN sudo echo -e "EvDev Build Finish: $(date)" >> /etc/EvDev.prop
+RUN echo -e "EvDev Build Finish: $(date)" | sudo tee -a /etc/EvDev.prop
 
 WORKDIR /workdir
 
