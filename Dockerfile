@@ -21,8 +21,12 @@ RUN apk add --update-cache \
 # utilities
 RUN apk add --update-cache \
     bash zsh less tmux ncurses \
-    the_silver_searcher p7zip \
-    git htop neofetch shadow
+    p7zip htop neofetch shadow
+
+# dev utils
+RUN apk add --update-cache \
+    git the_silver_searcher \
+    man man-pages ctags
 
 # Python
 RUN apk add --update-cache \
@@ -43,7 +47,7 @@ RUN apk add --update-cache \
 
 # C/C++
 RUN apk add --update-cache \
-    clang clang-dev ctags
+    clang clang-dev
 
 # Rust
 RUN apk add --update-cache \
