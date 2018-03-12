@@ -5,6 +5,9 @@ ENV HOSTNAME EvDev-Container
 # ENV DEBIAN_FRONTEND noninteractive
 ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
 
+# Record the current image's build time
+RUN echo -e "EvDev Build Start: $(date)" >> /etc/EvDev.prop
+
 # User with temporary password
 RUN adduser -s /bin/zsh -D everette && \
     echo "root:33554432!" | chpasswd &&\
@@ -162,6 +165,9 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
 RUN mkdir -p $XDG_CONFIG_HOME/nvim/shada && touch $XDG_CONFIG_HOME/nvim/shada/main.shada
 
 ENV PATH "$PATH:$HOME/.fzf/bin"
+
+# Record the current image's build time
+RUN echo -e "EvDev Build Finish: $(date)" >> /etc/EvDev.prop
 
 WORKDIR /workdir
 
