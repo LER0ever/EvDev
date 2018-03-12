@@ -26,7 +26,8 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages ctags gdb
+    man man-pages ctags gdb \
+    perl qemu-img qemu-system-i386
 
 # Python
 RUN apk add --update-cache \
