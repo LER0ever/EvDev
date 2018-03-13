@@ -35,7 +35,7 @@ RUN apk add --update-cache \
 
 # Python modules
 RUN pip3 install thefuck \
-    yapf virtualenv
+    yapf virtualenv pipenv
 
 # Go
 RUN apk add --update-cache \
