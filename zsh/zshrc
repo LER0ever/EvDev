@@ -105,3 +105,6 @@ export HOSTGOPATH="/home/host/Code/Go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOSTGOPATH/bin"
 export PATH="$PATH:~/.cargo/bin"
+
+# Neofetch
+neofetch
