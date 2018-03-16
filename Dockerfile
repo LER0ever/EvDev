@@ -72,7 +72,7 @@ RUN apk add --update-cache \
 
 # LaTeX
 RUN apk add --update-cache \
-    texlive-full
+    texlive-full >/dev/null 2>&1
 
 # Lua
 RUN apk add --update-cache \
