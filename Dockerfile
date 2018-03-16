@@ -70,6 +70,10 @@ RUN apk add --update-cache \
     ruby ruby-dev ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
     && echo 'gem: --no-document' > /etc/gemrc
 
+# LaTeX
+RUN apk add --update-cache \
+    texlive-full
+
 # Lua
 RUN apk add --update-cache \
     lua5.3-dev lua-sec luajit
@@ -79,6 +83,13 @@ RUN apk add --update-cache \
     libtermkey neovim neovim-doc emacs \
     && pip3 install neovim \
     && gem install neovim
+ENV MICRO_VERSION 1.4.0
+RUN cd /tmp \
+    && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux64.tar.gz \
+    && tar zxvf micro-${MICRO_VERSION}-linux64.tar.gz \
+    && cd micro-${MICRO_VERSION} \
+    && cp micro /usr/local/bin \
+    && rm -rf micro-*
 
 # FRP
 ENV FRP_VERSION 0.15.1
