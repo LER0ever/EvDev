@@ -85,7 +85,7 @@ RUN apk add --update-cache \
     && gem install neovim
 ENV MICRO_VERSION 1.4.0
 RUN cd /tmp \
-    && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux64.tar.gz \
+    && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
     && tar zxvf micro-${MICRO_VERSION}-linux32.tar.gz \
     && cd micro-${MICRO_VERSION} \
     && cp micro /usr/local/bin \
