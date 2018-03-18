@@ -359,8 +359,8 @@ you should place your code here."
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
   ;; YCMD layer. Just use the Vim's YouCompleteMe submodule
-  (setq ycmd-server-command (list "python" (file-truename "~/.EverVim/bundle/YouCompleteMe/third_party/ycmd/ycmd")))
-  (setq ycmd-global-config (list (file-truename "~/.EverVim/plugins/youcompleteme/ycm_global_conf.py")))
+  (setq ycmd-server-command (list "python3" (file-truename "~/.EverVim/bundle/YouCompleteMe/third_party/ycmd/ycmd/")))
+  (setq ycmd-global-config (file-truename "~/.EverVim/plugins/youcompleteme/ycm_global_conf.py"))
   (add-hook 'c-mode-hook 'ycmd-mode)
   (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'python-mode-hook 'ycmd-mode)
