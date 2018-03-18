@@ -28,6 +28,7 @@ RUN apk add --update-cache \
     git the_silver_searcher \
     man man-pages ctags gdb \
     perl qemu-img qemu-system-i386
+RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && sudo bash gitflow-installer.sh install develop; rm gitflow-installer.sh
 
 # Python
 RUN apk add --update-cache \
@@ -39,7 +40,7 @@ RUN pip3 install thefuck \
 
 # Go
 RUN apk add --update-cache \
-    go
+    go go-tools glide
 
 # Nodejs
 RUN apk add --update-cache \
@@ -80,7 +81,8 @@ RUN apk add --update-cache \
 
 # Editors
 RUN apk add --update-cache \
-    libtermkey neovim neovim-doc emacs \
+    libtermkey neovim neovim-doc \
+    vim emacs \
     && pip3 install neovim \
     && gem install neovim
 ENV MICRO_VERSION 1.4.0
@@ -89,6 +91,7 @@ RUN cd /tmp \
     && tar zxvf micro-${MICRO_VERSION}-linux32.tar.gz \
     && cd micro-${MICRO_VERSION} \
     && cp micro /usr/local/bin \
+    && cd .. \
     && rm -rf micro-*
 
 # FRP
