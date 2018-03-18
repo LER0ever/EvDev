@@ -76,6 +76,7 @@ values."
      shell
      tmux
      ycmd
+     imenu-list
 
      ;; Frameworks
      ruby-on-rails
