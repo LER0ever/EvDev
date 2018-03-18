@@ -352,10 +352,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
   ;; Work around mouse scrolling
   (unless window-system
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+
+  ;; YCMD layer. Just use the Vim's YouCompleteMe submodule
+  (setq ycmd-server-command (list "python" (file-truename "~/.EverVim/bundle/YouCompleteMe/third_party/ycmd/ycmd")))
+  (setq ycmd-global-config (list (file-truename "~/.EverVim/plugins/youcompleteme/ycm_global_conf.py")))
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'python-mode-hook 'ycmd-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
