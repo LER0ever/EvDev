@@ -51,7 +51,10 @@ let g:header_field_author = 'LER0ever'
 let g:header_field_author_email = 'etasry@gmail.com'
 
 " Enable smooth scrolling
-let g:evervim_smooth_scrolling = 1
+" let g:evervim_smooth_scrolling = 1
+
+" Disable autoformatting
+let g:evervim_no_autoformat = 1
 
 " Hybrid Linenumber
 let g:evervim_hybrid_linenumber = 1
