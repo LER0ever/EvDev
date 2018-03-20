@@ -92,6 +92,8 @@ alias vi=vim
 alias nano=nvim
 alias evervim=nvim
 alias spacemacs=emacs
+alias esd=emacs --daemon
+alias ec=emacsclient
 
 # Locale
 export LC_ALL=en_US.UTF-8
