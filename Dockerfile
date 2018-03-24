@@ -27,8 +27,9 @@ RUN apk add --update-cache \
 RUN apk add --update-cache \
     git the_silver_searcher \
     man man-pages ctags gdb \
-    perl qemu-img qemu-system-i386
-RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install develop; rm -rf gitflow*
+    perl qemu-img qemu-system-i386 \
+    dropbear
+RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
 
 # Python
 RUN apk add --update-cache \
@@ -97,8 +98,6 @@ RUN cd /tmp \
 # FRP
 ENV FRP_VERSION 0.15.1
 RUN set -ex \
-    && apk add --update-cache \
-    openssh-server \
     && cd /tmp \
     && wget https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
     && tar zxvf frp_${FRP_VERSION}_linux_amd64.tar.gz \
