@@ -1,2 +1,2 @@
 #!/bin/bash
-sshd -D & frpc -c /etc/frp/frpc.ini
+dropbear -RFEmwg -p 22 & frpc -c /etc/frp/frpc.ini

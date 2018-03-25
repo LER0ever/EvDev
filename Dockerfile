@@ -28,8 +28,9 @@ RUN apk add --update-cache \
     git the_silver_searcher \
     man man-pages ctags gdb \
     perl qemu-img qemu-system-i386 \
-    dropbear
+    dropbear openssh-client
 RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
+RUN mkdir /etc/dropbear && touch /var/log/lastlog
 
 # Python
 RUN apk add --update-cache \
