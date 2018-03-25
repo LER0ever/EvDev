@@ -7,8 +7,6 @@ install:
 - pip install --user docker-squash docker\<3
 script:
 - docker build --compress --pull --tag ler0ever/evdev .
-- docker-squash -t ler0ever/evdev:squashed ler0ever/evdev
 after_success:
 - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
-  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"
-  && docker push "ler0ever/evdev:squashed"'
+  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
