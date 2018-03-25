@@ -1,0 +1,5 @@
+#!/bin/bash
+export TERM=xterm-256color & \
+/usr/sbin/sshd -D & \
+frpc -c /etc/frp/frpc.ini & \
+emacs --daemon
