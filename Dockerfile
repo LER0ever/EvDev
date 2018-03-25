@@ -29,7 +29,7 @@ RUN apk add --update-cache \
     man man-pages ctags gdb \
     perl qemu-img qemu-system-i386 \
     openssh mosh
-RUN ssh-keygen -A
+RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
 EXPOSE 22
 RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
 
