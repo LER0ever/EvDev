@@ -32,6 +32,12 @@ RUN apk add --update-cache \
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
 EXPOSE 22
 RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
+RUN cd /tmp && \
+    git clone https://github.com/tj/git-extras.git && \
+    cd git-extras && \
+    git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) && \
+    sudo make install && \
+    cd .. && rm -rf git-extras
 
 
 # Python
