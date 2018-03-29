@@ -201,8 +201,6 @@ COPY vim/ctags $HOME/.ctags
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
  && ~/.fzf/install --bin
 
-RUN mkdir -p $XDG_CONFIG_HOME/nvim/shada && touch $XDG_CONFIG_HOME/nvim/shada/main.shada
-
 ENV PATH "$PATH:$HOME/.fzf/bin"
 
 # Record the current image's build time
