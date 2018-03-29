@@ -168,7 +168,7 @@ ENV PATH "$PATH:$GOBIN"
 
 # ssh
 COPY ssh $HOME/.ssh
-RUN chown -R $USER:$USER $HOME/.ssh && chmod 600 $HOME/.ssh/config
+RUN sudo chown -R everette:everette $HOME/.ssh && sudo chmod 600 $HOME/.ssh/config
 # RUN ssh-keyscan github.com > $HOME/.ssh/known_hosts
 
 # colors
