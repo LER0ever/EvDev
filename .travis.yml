@@ -4,7 +4,6 @@ services:
 - docker
 install:
 - docker version
-- pip install --user docker-squash docker\<3
 script:
 - docker build --compress --pull --tag ler0ever/evdev .
 after_success:
