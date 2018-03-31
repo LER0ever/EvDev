@@ -109,7 +109,9 @@ RUN cd /tmp \
     && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
     && tar zxvf micro-${MICRO_VERSION}-linux32.tar.gz \
     && cd micro-${MICRO_VERSION} \
-    && cp micro /usr/local/bin \
+    && mkdir -p /usr/local/lib/micro \
+    && cp micro /usr/local/lib/micro/ \
+    && echo -e '#!/bin/bash\nenv TERM=xterm-256color /usr/lib/micro/micro "$@"' > /usr/local/bin/micro \
     && cd .. \
     && rm -rf micro-*
 
