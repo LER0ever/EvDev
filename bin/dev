@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# TODO: Configurable background jobs
+
+# Define session name
+
+SESSION=EvDev
+
+# Go to working directory
+
+cd /workdir
+
+# Session Exists?
+
+tmux has-session -t $SESSION
+if [ $? -eq 0 ]; then
+  echo "Session $SESSION already exists. Attaching."
+  sleep 1
+  tmux attach -t $SESSION
+  exit 0;
+fi
+
+tmux -2 new-session -d -s $SESSION
+
+# Create windows
+tmux new-window -t $SESSION:1 -n "Coding"
+tmux new-window -t $SESSION:2 -n "Commands"
+tmux new-window -t $SESSION:3 -n "Jobs"
+
+# Define window roles
+
+# Coding
+tmux select-window -t $SESSION:1
+tmux split-window -h
+tmux resize-pane -R 20
+tmux split-window -v
+tmux resize-pane -D 20
+
+tmux select-pane -t 0
+tmux send-keys "clear ; " C-m
+tmux select-pane -t 1
+tmux send-keys "clear ; nvim" C-m
+tmux select-pane -t 2
+tmux send-keys "clear ; " C-m
+
+# Commands
+tmux select-window -t $SESSION:2
+tmux select-pane -t 0
+tmux send-keys "clear ; gs" C-m
+
+# Background Jobs
+tmux select-window -t $SESSION:3
+tmux split-window -h
+tmux split-window -v
+
+tmux select-pane -t 0
+tmux send-keys "clear ; sudo /usr/sbin/sshd -D" C-m
+tmux select-pane -t 1
+tmux send-keys "clear ; emacs --daemon" C-m
+tmux select-pane -t 2
+tmux send-keys "clear ; sudo frpc -c /etc/frp/frpc.ini" C-m
+
+# Set the initial working window
+tmux select-window -t $SESSION:1
+
+# Attach to named session
+tmux -2 attach-session -t $SESSION

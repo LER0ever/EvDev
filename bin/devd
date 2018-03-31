@@ -1,9 +1,0 @@
-#!/bin/bash
-export TERM=xterm-256color & \
-sudo /usr/sbin/sshd -D & \
-sudo frpc -c /etc/frp/frpc.ini & \
-emacs --daemon
-
-# 1. ssh server
-# 2. frp reverse proxy
-# 3. emacs daemon
