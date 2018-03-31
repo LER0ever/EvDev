@@ -100,7 +100,7 @@ RUN apk add --update-cache \
 # Editors
 RUN apk add --update-cache \
     libtermkey neovim neovim-doc \
-    vim emacs \
+    vim emacs kakoune \
     && pip3 install neovim \
     && gem install neovim
 ENV MICRO_VERSION 1.4.0
