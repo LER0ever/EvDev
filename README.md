@@ -1,21 +1,29 @@
-## EvDev
+## EvDev [![Build Status](https://travis-ci.org/LER0ever/EvDev.svg?branch=master)](https://travis-ci.org/LER0ever/EvDev)
 LER0ever's Personal Dockerized Development Environment
 
 ## Awesomeness included
+#### OS
 - Alpine Edge
+#### Editors (IDEs)
 - Full-Featured EverVim (with all of supported languages) running on latest Neovim
-- Preconfigured Tmux and Zsh
-- Toolchains for
-    - C (clang, lldb, gcc, gdb)
-    - Golang
-    - Rust (Cargo, Rustc, Racer)
-    - Nodejs (Tern, Typescript)
-    - Ruby (Rails)
-    - Python 2/3
-    - C# Mono
-    - Lua(jit)
 - Full-Featured Spacemacs (on latest emacs)
-- FRP
+- Micro (a minimal and intuitive editor in Golang)
+- Kakoune editor
+- GNU nano
+#### Languages & Frameworks
+- C (clang, lldb, gcc, gdb)
+- Golang
+- Rust (Cargo, Rustc, Racer)
+- Nodejs (Tern, Typescript)
+- Ruby (Rails)
+- Python 2/3
+- C# Mono
+- Lua(jit)
+- Erlang & Elixir
+#### Utilities 
+- Preconfigured Tmux and Zsh
+- SSH server for remote development
+- FRP (Fast Reverse Proxy)
 
 ![](https://i.imgur.com/S0sclRg.png)
 
