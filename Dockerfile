@@ -30,7 +30,6 @@ RUN apk add --update-cache \
     perl qemu-img qemu-system-i386 \
     openssh mosh
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
-EXPOSE 22
 RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
 RUN cd /tmp && \
     git clone https://github.com/tj/git-extras.git && \
@@ -104,10 +103,6 @@ RUN apk add --update-cache \
     && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && pip3 install neovim \
     && gem install neovim
-RUN cd /tmp \
-    && wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
-    && mv nvim.appimage /usr/local/bin/nvim-git \
-    && chmod +x /usr/local/bin/nvim-git
 ENV MICRO_VERSION 1.4.0
 RUN cd /tmp \
     && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
@@ -115,7 +110,7 @@ RUN cd /tmp \
     && cd micro-${MICRO_VERSION} \
     && mkdir -p /usr/local/lib/micro \
     && cp micro /usr/local/lib/micro/ \
-    && echo -e '#!/bin/bash\nenv TERM=xterm-256color /usr/lib/micro/micro "$@"' > /usr/local/bin/micro \
+    && echo -e '#!/bin/bash\nenv TERM=xterm-256color /usr/local/lib/micro/micro "$@"' > /usr/local/bin/micro \
     && cd .. \
     && rm -rf micro-*
 
