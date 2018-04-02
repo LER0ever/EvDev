@@ -18,6 +18,7 @@ let g:evervim_bundle_groups=[
             \ 'd',
             \ 'r',
             \ 'dart',
+            \ 'erlang',
             \ 'elixir',
             \ 'fsharp',
             \ 'haskell',
