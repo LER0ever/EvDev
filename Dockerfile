@@ -96,6 +96,19 @@ RUN apk add --update-cache \
     erlang-sasl erlang-erl-interface erlang-dev \
     elixir
 
+# PHP & Nginx
+# Mainly for Kodexplorer
+RUN apk add --update-cache \
+    php7 php7-session php7-json php7-curl php7-exif \
+    php7-mbstring php7-ldap php7-gd php7-pdo \
+    php7-pdo_mysql php7-xml php7-iconv nginx supervisor
+COPY kode/nginx.conf /etc/nginx/nginx.conf
+COPY kode/fpm-pool.conf /etc/php7/php-fpm.d/99_custom.conf
+COPY kode/php.ini /etc/php7/conf.d/99_custom.ini
+COPY kode/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN git clone https://github.com/kalcaddle/KodExplorer.git /var/www/html && \
+    ln -s /workdir /var/www/html/data/User/admin/home/
+
 # Editors
 RUN apk add --update-cache \
     libtermkey neovim neovim-doc \
