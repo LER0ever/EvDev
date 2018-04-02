@@ -107,6 +107,7 @@ COPY kode/fpm-pool.conf /etc/php7/php-fpm.d/99_custom.conf
 COPY kode/php.ini /etc/php7/conf.d/99_custom.ini
 COPY kode/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN git clone https://github.com/kalcaddle/KodExplorer.git /var/www/html && \
+    mkdir -p /var/www/html/data/User/admin/home && \
     ln -s /workdir /var/www/html/data/User/admin/home/
 
 # Editors
