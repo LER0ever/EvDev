@@ -99,8 +99,8 @@ RUN apk add --update-cache \
 # PHP & Nginx
 # Mainly for Kodexplorer
 RUN apk add --update-cache \
-    php7 php7-session php7-json php7-curl php7-exif \
-    php7-mbstring php7-ldap php7-gd php7-pdo \
+    php7 php7-fpm php7-session php7-json php7-curl \
+    php7-exif php7-mbstring php7-ldap php7-gd php7-pdo \
     php7-pdo_mysql php7-xml php7-iconv nginx supervisor
 COPY kode/nginx.conf /etc/nginx/nginx.conf
 COPY kode/fpm-pool.conf /etc/php7/php-fpm.d/99_custom.conf
