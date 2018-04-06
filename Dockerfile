@@ -2,9 +2,6 @@ FROM alpine:edge
 MAINTAINER Everette Rong (https://rongyi.blog)
 ENV HOSTNAME EvDev-Container
 
-# Record the current image's build time
-RUN echo -e "EvDev Build Start: $(date)" >> /etc/EvDev.prop
-
 # ENV DEBIAN_FRONTEND noninteractive
 ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
 
@@ -125,22 +122,22 @@ RUN cd /tmp && \
     ncurses-dev libtool && \
     git clone https://github.com/neovim/libtermkey.git && \
     cd libtermkey && \
-    make && \
+    make >/dev/null 2>&1 && \
     make install && \
     cd ../ && rm -rf libtermkey && \
     git clone https://github.com/neovim/libvterm.git && \
     cd libvterm && \
-    make && \
+    make >/dev/null 2>&1 && \
     make install && \
     cd ../ && rm -rf libvterm && \
     git clone https://github.com/mauke/unibilium.git && \
     cd unibilium && \
-    make && \
+    make >/dev/null 2>&1 && \
     make install && \
     cd ../ && rm -rf unibilium && \
     git clone https://github.com/neovim/neovim.git && \
     cd neovim && \
-    make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+    make CMAKE_BUILD_TYPE=RelWithDebInfo >/dev/null 2>&1 && \
     make install && \
     cd ../ && rm -rf neovim && \
     apk del .build-dependencies && \
@@ -248,7 +245,7 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
 ENV PATH "$PATH:$HOME/.fzf/bin"
 
 # Record the current image's build time
-RUN echo -e "EvDev Build Finish: $(date)" | sudo tee -a /etc/EvDev.prop
+RUN echo -e "EvDev Build: $(date)" | sudo tee -a /etc/EvDev.prop
 
 WORKDIR /workdir
 
