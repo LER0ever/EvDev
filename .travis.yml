@@ -2,10 +2,15 @@ language: generic
 sudo: required
 services:
 - docker
+before_install:
+- 'echo "{ \"experimental\": true, \"storage-driver\": \"overlay2\", \"max-concurrent-downloads\": 50, \"max-concurrent-uploads\": 50 }" | sudo tee /etc/docker/daemon.json'
+- sudo service docker restart
+- docker images
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 install:
 - docker version
 script:
-- docker build --compress --pull --tag ler0ever/evdev .
+- docker build --compress --squash --pull --tag ler0ever/evdev .
 after_success:
 - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
   login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
