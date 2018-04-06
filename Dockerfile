@@ -26,7 +26,7 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages ctags gdb \
+    man man-pages gdb \
     perl qemu-img qemu-system-i386 \
     openssh mosh
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
@@ -37,7 +37,13 @@ RUN cd /tmp && \
     git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) && \
     make install && \
     cd .. && rm -rf git-extras
-
+RUN cd /tmp && \
+    git clone --depth 1 https://github.com/universal-ctags/ctags.git && \
+    cd ctags && \
+    ./autogen.sh && \
+    ./configure && \
+    make && make install && \
+    cd .. && rm -rf ctags
 
 # Python
 RUN apk add --update-cache \

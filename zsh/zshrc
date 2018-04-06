@@ -103,7 +103,7 @@ export LANG=en_US.UTF-8
 eval $(thefuck --alias)
 
 # Go Env
-export GOPATH="/home/everette/Code/Go"
+export GOPATH="/workdir"
 export HOSTGOPATH="/home/host/Code/Go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOSTGOPATH/bin"
