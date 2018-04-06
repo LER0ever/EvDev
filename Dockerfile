@@ -118,11 +118,9 @@ RUN git clone https://github.com/kalcaddle/KodExplorer.git /var/www/html && \
 
 # Editors
 RUN apk add --update-cache \
-    libtermkey vim emacs \
+    vim emacs neovim neovim-doc \
     && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN cd /tmp && \
-    git clone --depth 1 https://github.com/neovim/libvterm.git && \
-    cd libvterm && make install && cd .. && rm -rf libvterm && \
     git clone --depth 1 https://github.com/neovim/neovim.git && \
     cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && \
     make install && cd .. && rm -rf neovim && \
