@@ -26,7 +26,7 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages autoconf \
+    man man-pages autoconf libtool \
     automake gdb openssh mosh \
     perl qemu-img qemu-system-i386
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
