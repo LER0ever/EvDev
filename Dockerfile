@@ -26,7 +26,7 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages autoconf libtool \
+    man man-pages autoconf \
     automake gdb openssh mosh \
     perl qemu-img qemu-system-i386
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
@@ -121,6 +121,8 @@ RUN apk add --update-cache \
     vim emacs \
     && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN cd /tmp && \
+    apk add --no-cache --virtual=.build-dependencies \
+    ncurses-dev libtool && \
     git clone https://github.com/neovim/libtermkey.git && \
     cd libtermkey && \
     make && \
@@ -141,6 +143,7 @@ RUN cd /tmp && \
     make CMAKE_BUILD_TYPE=RelWithDebInfo && \
     make install && \
     cd ../ && rm -rf neovim && \
+    apk del .build-dependencies && \
     pip3 install neovim && gem install neovim
 ENV MICRO_VERSION 1.4.0
 RUN cd /tmp \
