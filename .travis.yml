@@ -8,7 +8,7 @@ before_install:
 install:
 - docker version
 script:
-- docker build --compress --squash --pull --tag ler0ever/evdev .
+- docker build --compress --pull --tag ler0ever/evdev .
 after_success:
 - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
   login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
