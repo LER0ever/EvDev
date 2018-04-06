@@ -118,11 +118,15 @@ RUN git clone https://github.com/kalcaddle/KodExplorer.git /var/www/html && \
 
 # Editors
 RUN apk add --update-cache \
-    libtermkey neovim neovim-doc \
-    vim emacs \
-    && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    && pip3 install neovim \
-    && gem install neovim
+    libtermkey vim emacs \
+    && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN cd /tmp && \
+    git clone --depth 1 https://github.com/neovim/libvterm.git && \
+    cd libvterm && make install && cd .. && rm -rf libvterm && \
+    git clone --depth 1 https://github.com/neovim/neovim.git && \
+    cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+    make install && cd .. && rm -rf neovim && \
+    pip3 install neovim && gem install neovim
 ENV MICRO_VERSION 1.4.0
 RUN cd /tmp \
     && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
