@@ -26,9 +26,9 @@ RUN apk add --update-cache \
 # dev utils
 RUN apk add --update-cache \
     git the_silver_searcher \
-    man man-pages gdb \
-    perl qemu-img qemu-system-i386 \
-    openssh mosh
+    man man-pages autoconf \
+    automake gdb openssh mosh \
+    perl qemu-img qemu-system-i386
 RUN ssh-keygen -A && echo "Welcome to EvDev Container!" > /etc/motd
 RUN wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && bash gitflow-installer.sh install stable; rm -rf gitflow*
 RUN cd /tmp && \
