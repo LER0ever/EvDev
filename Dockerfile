@@ -133,7 +133,7 @@ RUN cd /tmp && \
     make && \
     make install && \
     cd ../ && rm -rf libvterm && \
-    git clone https://github.com/neovim/unibilium.git && \
+    git clone https://github.com/mauke/unibilium.git && \
     cd unibilium && \
     make && \
     make install && \
