@@ -22,7 +22,7 @@ RUN apk add --update-cache \
 
 # dev utils
 RUN apk add --update-cache \
-    git the_silver_searcher \
+    git tig the_silver_searcher \
     man man-pages autoconf \
     automake gdb openssh mosh \
     perl qemu-img qemu-system-i386
