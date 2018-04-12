@@ -99,25 +99,14 @@ RUN apk add --update-cache \
     erlang-sasl erlang-erl-interface erlang-dev \
     elixir
 
-# PHP & Nginx
-# Mainly for Kodexplorer
-RUN apk add --update-cache \
-    php7 php7-fpm php7-session php7-json php7-curl \
-    php7-exif php7-mbstring php7-ldap php7-gd php7-pdo \
-    php7-pdo_mysql php7-xml php7-iconv nginx supervisor
-COPY kode/nginx.conf /etc/nginx/nginx.conf
-COPY kode/fpm-pool.conf /etc/php7/php-fpm.d/99_custom.conf
-COPY kode/php.ini /etc/php7/conf.d/99_custom.ini
-COPY kode/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN git clone https://github.com/kalcaddle/KodExplorer.git /var/www/html && \
-    mkdir -p /var/www/html/data/User/admin/home && \
-    ln -s /workdir /var/www/html/data/User/admin/home/
-
 # Editors
 RUN apk add --update-cache \
-    vim emacs neovim neovim-doc \
-    && apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    pip3 install neovim && gem install neovim
+    vim emacs neovim neovim-doc && \
+    pip3 install neovim && gem install neovim && \
+    apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --update-cache \
+    openssl-dev libxcb-dev && \
+    cargo install amp
 ENV MICRO_VERSION 1.4.0
 RUN cd /tmp \
     && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
@@ -218,11 +207,11 @@ COPY vim/ctags $HOME/.ctags
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
  && ~/.fzf/install --bin
 
-ENV PATH "$PATH:$HOME/.fzf/bin"
+ENV PATH "$PATH:$HOME/.cargo/bin:$HOME/.fzf/bin"
 
 # Record the current image's build time
 RUN echo -e "EvDev Build: $(date)" | sudo tee -a /etc/EvDev.prop
 
 WORKDIR /workdir
 
-CMD [ "/bin/zsh" ]
+CMD [ "/bin/zsh". "-c", "'neofetch ; /bin/zsh'"]
