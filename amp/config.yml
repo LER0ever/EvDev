@@ -1,0 +1,15 @@
+keymap:
+  normal:
+    ctrl-s: "buffer::save"
+  insert:
+    ctrl-s: "buffer::save"
+types:
+  rs:
+    tab_width: 4
+    soft_tabs: true
+  go:
+    tab_width: 4
+    soft_tabs: false
+  html:
+    tab_width: 2
+    soft_tabs: true

@@ -173,6 +173,9 @@ RUN git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d \
   && emacs -nw -batch -u "everette" -q -kill >/dev/null 2>&1 \
   && emacs -nw -batch -u "everette" -q -kill >/dev/null 2>&1
 
+# AMP
+COPY amp/config.yml $HOME/.config/amp/config.yml
+
 # go
 ENV GOPATH $HOME/Code/Go
 ENV GOBIN $GOPATH/bin
