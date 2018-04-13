@@ -1,3 +1,4 @@
+theme: Dracula
 keymap:
   normal:
     ctrl-s: "buffer::save"
