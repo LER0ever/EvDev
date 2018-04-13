@@ -175,6 +175,7 @@ RUN git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d \
 
 # AMP
 COPY amp/config.yml $HOME/.config/amp/config.yml
+COPY amp/Dracula.tmTheme $HOME/.config/amp/themes/Dracula.tmTheme
 
 # go
 ENV GOPATH $HOME/Code/Go
