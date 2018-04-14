@@ -49,7 +49,7 @@ RUN apk add --update-cache \
 # Python modules
 RUN pip3 install thefuck \
     yapf virtualenv pipenv legit && \
-    legit install
+    legit --install
 
 # Go
 RUN apk add --update-cache \
