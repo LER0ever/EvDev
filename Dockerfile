@@ -219,4 +219,4 @@ RUN echo -e "EvDev Build: $(date)" | sudo tee -a /etc/EvDev.prop
 
 WORKDIR /workdir
 
-CMD [ "/bin/zsh". "-c", "'neofetch ; /bin/zsh'"]
+CMD [ "/bin/zsh", "-c", "'neofetch ; /bin/zsh'"]
