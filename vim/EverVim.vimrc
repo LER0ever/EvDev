@@ -55,7 +55,7 @@ let g:header_field_author_email = 'etasry@gmail.com'
 let g:evervim_smooth_scrolling = 1
 
 " Disable autoformatting
-" let g:evervim_no_autoformat = 1
+let g:evervim_no_autoformat = 1
 
 " Hybrid Linenumber
 let g:evervim_hybrid_linenumber = 1
