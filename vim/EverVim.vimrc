@@ -41,7 +41,7 @@ endif
 let g:evervim_font_size = "15"
 
 let g:evervim_color_theme="codedark"
-let g:evervim_airline_theme="wombat"
+let g:evervim_airline_theme="codedark"
 
 " Fast Escape
 imap jj <Esc>
