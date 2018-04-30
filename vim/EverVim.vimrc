@@ -40,7 +40,7 @@ else
 endif
 let g:evervim_font_size = "15"
 
-let g:evervim_color_theme="kolor"
+let g:evervim_color_theme="codedark"
 let g:evervim_airline_theme="wombat"
 
 " Fast Escape
@@ -52,13 +52,15 @@ let g:header_field_author = 'LER0ever'
 let g:header_field_author_email = 'etasry@gmail.com'
 
 " Enable smooth scrolling
-" let g:evervim_smooth_scrolling = 1
+let g:evervim_smooth_scrolling = 1
 
 " Disable autoformatting
-let g:evervim_no_autoformat = 1
+" let g:evervim_no_autoformat = 1
 
 " Hybrid Linenumber
 let g:evervim_hybrid_linenumber = 1
+
+let g:evervim_use_syntastic = 1
 
 " Minimap
 let g:evervim_minimap = 1
