@@ -14,3 +14,33 @@ jobs:
       - docker build -f Dockerfile.base --compress --pull --tag ler0ever/evdev.base .
       after_success:
       - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.base"'
+    - stage: Build EvDev Language Support
+      script:
+      - docker build -f Dockerfile.lang --compress --pull --tag ler0ever/evdev.lang .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.lang"'
+    - stage: Build EvDev Editors and Utilities
+      script:
+      - docker build -f Dockerfile.utils --compress --pull --tag ler0ever/evdev.utils .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.utils"'
+    - stage: Build EvDev EverVim
+      script:
+      - docker build -f Dockerfile.evervim --compress --pull --tag ler0ever/evdev.evervim .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.evervim"'
+    - stage: Build EvDev Spacemacs
+      script:
+      - docker build -f Dockerfile.spacemacs --compress --pull --tag ler0ever/evdev.spacemacs .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.spacemacs"'
+    - stage: Build EvDev User Configuration
+      script:
+      - docker build -f Dockerfile.config --compress --pull --tag ler0ever/evdev.config .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.config"'
+    - stage: Build EvDev Docker Image
+      script:
+      - docker build --compress --pull --tag ler0ever/evdev .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'

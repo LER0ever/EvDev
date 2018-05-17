@@ -1,0 +1,18 @@
+FROM ler0ever/evdev.utils:latest
+MAINTAINER Everette Rong (https://rongyi.blog)
+
+ENV HOME /home/everette
+ENV XDG_CONFIG_HOME  $HOME/.config
+RUN chown -R everette:everette $HOME
+USER everette
+
+# EverVim
+COPY vim/EverVim.vimrc $HOME/.EverVim.vimrc
+RUN curl -sLf https://raw.githubusercontent.com/LER0ever/EverVim/master/Boot-EverVim.sh | bash \
+  && echo -e "Installing EverVim Distribution ..." \
+  && sudo chown everette:everette $HOME/.EverVim.vimrc \
+  && nvim --headless +PlugInstall +qa &> /dev/null
+RUN cd $HOME/.EverVim/bundle/YouCompleteMe \
+    && python3 install.py --clang-completer --system-libclang --go-completer --rust-completer --js-completer --cs-completer \
+    && cd $HOME/.EverVim/bundle/vimproc.vim \
+    && make

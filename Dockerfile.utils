@@ -1,0 +1,48 @@
+FROM ler0ever/evdev.lang:latest
+MAINTAINER Everette Rong (https://rongyi.blog)
+
+# Editors
+RUN apk add --update-cache \
+    vim emacs neovim neovim-doc && \
+    pip3 install neovim && gem install neovim && \
+    apk add --no-cache kakoune --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --update-cache \
+    openssl-dev libxcb-dev && \
+    cargo install amp && mv /root/.cargo/bin/amp /usr/local/bin
+ENV MICRO_VERSION 1.4.0
+RUN cd /tmp \
+    && wget https://github.com/zyedidia/micro/releases/download/v${MICRO_VERSION}/micro-${MICRO_VERSION}-linux32.tar.gz \
+    && tar zxvf micro-${MICRO_VERSION}-linux32.tar.gz \
+    && cd micro-${MICRO_VERSION} \
+    && mkdir -p /usr/local/lib/micro \
+    && cp micro /usr/local/lib/micro/ \
+    && echo -e '#!/bin/bash\nenv TERM=xterm-256color /usr/local/lib/micro/micro "$@"' > /usr/local/bin/micro \
+    && cd .. \
+    && rm -rf micro-*
+
+# FRP
+ENV FRP_VERSION 0.15.1
+RUN set -ex \
+    && cd /tmp \
+    && wget https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
+    && tar zxvf frp_${FRP_VERSION}_linux_amd64.tar.gz \
+    && rm frp_${FRP_VERSION}_linux_amd64.tar.gz \
+    && cd frp_${FRP_VERSION}_linux_amd64 \
+    && cp frps /usr/local/bin \
+    && cp frpc /usr/local/bin \
+    && mkdir /etc/frp \
+    && cp frps.ini /etc/frp \
+    && cp frpc.ini /etc/frp \
+    && cd .. \
+    && rm -rf frp_${FRP_VERSION}_linux_amd64
+COPY frp/frpc.ini /etc/frp/
+
+# Clean the cache
+RUN rm -rf /var/cache/apk/*
+
+ENV SHELL /bin/zsh
+
+COPY bin /usr/local/bin
+
+RUN chmod -R 777 /usr/local
+

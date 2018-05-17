@@ -1,0 +1,60 @@
+FROM ler0ever/evdev.base:latest
+MAINTAINER Everette Rong (https://rongyi.blog)
+
+# Python
+RUN apk add --update-cache \
+    python-dev python3-dev python3
+
+# Python modules
+RUN pip3 install thefuck \
+    yapf virtualenv pipenv legit && \
+    yes | legit --install
+
+# Go
+RUN apk add --update-cache \
+    go go-tools glide
+
+# Nodejs
+RUN apk add --update-cache \
+    nodejs yarn nodejs-npm \
+    && npm i -g typescript \
+    && npm i -g tern
+
+# C/C++
+RUN apk add --update-cache \
+    clang clang-dev
+
+# Rust
+RUN apk add --update-cache \
+    rust rust-src cargo
+
+# Csharp
+ENV NUGET_VERSION 4.6.0
+RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
+    cert-sync /etc/ssl/certs/ca-certificates.crt && \
+    apk del .build-dependencies && \
+    wget -P /usr/lib/mono https://dist.nuget.org/win-x86-commandline/v${NUGET_VERSION}/nuget.exe && \
+    echo -e '#!/bin/sh\nexec /usr/bin/mono $MONO_OPTIONS /usr/lib/mono/nuget.exe "$@"' > /usr/bin/nuget && \
+    chmod a+x /usr/bin/nuget
+
+# Ruby
+RUN apk add --update-cache \
+    ruby ruby-dev ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
+    && echo 'gem: --no-document' > /etc/gemrc
+
+# LaTeX
+RUN apk add --update-cache \
+    texlive-full >/dev/null 2>&1
+
+# Lua
+RUN apk add --update-cache \
+    lua5.3-dev lua-sec luajit
+
+# Erlang/Elixir
+RUN apk add --update-cache \
+    erlang erlang-crypto erlang-syntax-tools \
+    erlang-parsetools erlang-inets erlang-ssl \
+    erlang-public-key erlang-eunit erlang-asn1 \
+    erlang-sasl erlang-erl-interface erlang-dev \
+    elixir
