@@ -2,13 +2,15 @@ language: generic
 sudo: required
 services:
 - docker
-before_install:
-- 'echo "{ \"experimental\": true, \"storage-driver\": \"overlay2\", \"max-concurrent-downloads\": 50, \"max-concurrent-uploads\": 50 }" | sudo tee /etc/docker/daemon.json'
-- sudo service docker restart
-install:
-- docker version
-script:
-- docker build --compress --pull --tag ler0ever/evdev .
-after_success:
-- '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker
-  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev"'
+jobs:
+  include:
+    - stage: Prepare EvDev Build
+      script:
+      - docker version
+      - 'echo "{ \"experimental\": true, \"storage-driver\": \"overlay2\", \"max-concurrent-downloads\": 50, \"max-concurrent-uploads\": 50 }" | sudo tee /etc/docker/daemon.json'
+      - sudo service docker restart
+    - stage: Build EvDev Base
+      script:
+      - docker build -f Dockerfile.base --compress --pull --tag ler0ever/evdev.base .
+      after_success:
+      - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push "ler0ever/evdev.base"'
