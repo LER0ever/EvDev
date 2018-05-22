@@ -11,10 +11,10 @@ COPY vim/EverVim.vimrc $HOME/.EverVim.vimrc
 RUN curl -sLf https://raw.githubusercontent.com/LER0ever/EverVim/master/Boot-EverVim.sh | bash \
   && echo -e "Installing EverVim Distribution ..." \
   && sudo chown everette:everette $HOME/.EverVim.vimrc \
-  && nvim --headless +PlugInstall +qa &> /dev/null \
+  && nvim --headless +PlugInstall +qa &> /dev/null
 RUN cd $HOME/.EverVim/bundle/YouCompleteMe \
     && python3 install.py --clang-completer --system-libclang --go-completer --rust-completer --js-completer --cs-completer \
-    && env GOPATH=/tmp GOBIN=/usr/local/bin nvim --headless +GoInstallBinaries +qa &> /dev/null
-    && rm -rf /tmp/*
+    && env GOPATH=/tmp GOBIN=/usr/local/bin nvim --headless +GoInstallBinaries +qa &> /dev/null \
+    && rm -rf /tmp/* \
     && cd $HOME/.EverVim/bundle/vimproc.vim \
     && make
