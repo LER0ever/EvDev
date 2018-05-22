@@ -40,8 +40,8 @@ else
 endif
 let g:evervim_font_size = "15"
 
-let g:evervim_color_theme="codedark"
-let g:evervim_airline_theme="codedark"
+let g:evervim_color_theme="kolor"
+let g:evervim_airline_theme="wombat"
 
 " Fast Escape
 imap jj <Esc>
@@ -60,6 +60,7 @@ let g:evervim_no_autoformat = 1
 " Hybrid Linenumber
 let g:evervim_hybrid_linenumber = 1
 
+" ALE has a lot of bugs
 let g:evervim_use_syntastic = 1
 
 " Minimap
