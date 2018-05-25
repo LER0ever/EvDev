@@ -33,7 +33,7 @@ RUN cd /tmp && \
     cd git-extras && \
     git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) && \
     make install && \
-    cd .. && rm -rf git-extras
+    cd .. && rm -rf git-extras*
 RUN cd /tmp && \
     git clone --depth 1 https://github.com/universal-ctags/ctags.git && \
     cd ctags && \
