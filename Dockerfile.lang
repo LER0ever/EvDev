@@ -42,7 +42,7 @@ ENV DOTNET_RUNNING_IN_CONTAINER=true \
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     DOTNET_USE_POLLING_FILE_WATCHER=true \ 
     NUGET_XMLDOC_MODE=skip \
-    DOTNET_SDK_VERSION 2.1.300
+    DOTNET_SDK_VERSION=2.1.300
 RUN apk add --update-cache \
         krb5-libs \
         libgcc \
