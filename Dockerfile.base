@@ -11,6 +11,11 @@ RUN adduser -s /bin/zsh -D everette && \
     echo "everette:33554432!" | chpasswd && \
     echo "everette ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# Add alpine edge [ main, community, testing ]
+RUN echo -e \
+    'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' \
+    > /etc/apk/repositories
+
 # base
 RUN apk add --update-cache \
     linux-headers alpine-sdk build-base cmake
