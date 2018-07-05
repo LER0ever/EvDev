@@ -12,7 +12,7 @@ RUN pip3 install thefuck \
 
 # Go
 RUN apk add --update-cache \
-    go go-tools glide \
+    go go-tools glide dep \
     && env GOPATH=/tmp GOBIN=/usr/local/bin go get github.com/smartystreets/goconvey \
     && rm -rf /tmp/*
 
