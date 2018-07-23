@@ -13,7 +13,8 @@ RUN pip3 install thefuck \
 # Go
 RUN apk add --update-cache \
     go go-tools glide dep \
-    && env GOPATH=/usr/go/ GOBIN=/usr/local/bin go get github.com/smartystreets/goconvey
+    && env GOPATH=/usr/go/ GOBIN=/usr/local/bin go get github.com/smartystreets/goconvey \
+    && chmod -R 777 /usr/go/src/github.com/smartystreets/goconvey/web/client
 
 # Nodejs
 RUN apk add --update-cache \
