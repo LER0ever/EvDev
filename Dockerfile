@@ -37,7 +37,8 @@ COPY --from=vscode-env /root/.vscode/extensions /root/.code-server/extensions
 COPY scripts /root/scripts
 
 EXPOSE 8443
-RUN apt-get install -y locales && \
+RUN apt-get update && \
+	apt-get install -y locales && \
 	locale-gen en_US.UTF-8
 # We unfortunately cannot use update-locale because docker will not use the env variables
 # configured in /etc/default/locale so we need to set it manually.
