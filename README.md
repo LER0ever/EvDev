@@ -37,6 +37,9 @@ docker run -p 127.0.0.1:8443:8443 -v "${PWD}:/project" ler0ever/evdev code-serve
 
 toolings pre-installed and ready to use.
 
+## CI and Docker Hub
+This docker image is built and pushed to Docker Hub [EvDev](https://cloud.docker.com/repository/docker/ler0ever/evdev/tags) everyday with [Travis](https://travis-ci.org/LER0ever/EvDev) Cron.
+
 ## License
 Credit goes to [code-server](https://github.com/codercom/code-server) project.  
 Code for this configuration is licensed under Apache 2.0, detailed in [LICENSE.md](LICENSE.md)
