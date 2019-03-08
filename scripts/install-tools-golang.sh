@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export GO_VERSION 1.12
+export GO_VERSION=1.12
 export GOPATH=/usr/local/go-packages
 export GO_ROOT=/usr/local/go
-export PATH $PATH:/usr/local/go/bin
-export PATH $PATH:${GOPATH}/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:${GOPATH}/bin
 
 curl -sS https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 go get -u -v github.com/ramya-rao-a/go-outline
