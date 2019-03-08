@@ -1,5 +1,3 @@
-MAINTAINER Everette Rong (https://rongyi.blog)
-
 # Just use the code-server docker binary
 FROM codercom/code-server as coder-binary
 
@@ -30,6 +28,7 @@ RUN code -v --user-data-dir /root/.config/Code && \
 
 # The production image for code-server
 FROM ubuntu:18.10
+MAINTAINER Everette Rong (https://rongyi.blog)
 WORKDIR /project
 COPY --from=coder-binary /usr/local/bin/code-server /usr/local/bin/code-server
 RUN mkdir -p /root/.code-server/User
