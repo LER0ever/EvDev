@@ -1,3 +1,6 @@
+MAINTAINER Everette Rong (https://rongyi.blog)
+
+# Just use the code-server docker binary
 FROM codercom/code-server as coder-binary
 
 FROM ubuntu:18.10 as vscode-env
@@ -18,16 +21,14 @@ RUN apt-get update && \
 COPY scripts /root/scripts
 COPY sync.gist /root/sync.gist
 
+# This gets user config from gist, parse it and install exts with VSCode
 RUN code -v --user-data-dir /root/.config/Code && \
 	cd /root/scripts && \
 	sh get-config-from-gist.sh && \
 	sh parse-extension-list.sh && \
 	sh install-vscode-extensions.sh ../extensions.list
 
-RUN ls -alh /root/.config/Code && \
-	ls -alh /root/.config/Code/User && \
-	ls -alh /root
-
+# The production image for code-server
 FROM ubuntu:18.10
 WORKDIR /project
 COPY --from=coder-binary /usr/local/bin/code-server /usr/local/bin/code-server
@@ -36,7 +37,7 @@ COPY --from=vscode-env /root/settings.json /root/.code-server/User/settings.json
 COPY --from=vscode-env /root/.vscode/extensions /root/.code-server/extensions
 COPY scripts /root/scripts
 
-EXPOSE 8443
+# Locale Generation
 RUN apt-get update && \
 	apt-get install -y locales && \
 	locale-gen en_US.UTF-8
@@ -44,11 +45,11 @@ RUN apt-get update && \
 # configured in /etc/default/locale so we need to set it manually.
 ENV LANG=en_US.UTF-8
 
+# Install langauge toolchains
 RUN sh /root/scripts/install-tools-dev.sh
 RUN sh /root/scripts/install-tools-golang.sh
 RUN sh /root/scripts/install-tools-cpp.sh
 RUN sh /root/scripts/install-tools-python.sh
 
-
-# Unfortunately `.` does not work with code-server.
+EXPOSE 8443
 CMD code-server $PWD
