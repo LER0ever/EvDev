@@ -36,10 +36,11 @@ COPY --from=vscode-env /root/settings.json /root/.code-server/User/settings.json
 COPY --from=vscode-env /root/.vscode/extensions /root/.code-server/extensions
 COPY scripts /root/scripts
 
-# Locale Generation
 RUN apt-get update && \
-	apt-get install -y locales ca-certificates && \
+	apt-get install curl gnupg2 ca-certificates && \
+	apt-get install -y locales && \
 	locale-gen en_US.UTF-8
+# Locale Generation
 # We unfortunately cannot use update-locale because docker will not use the env variables
 # configured in /etc/default/locale so we need to set it manually.
 ENV LANG=en_US.UTF-8
