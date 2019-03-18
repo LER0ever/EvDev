@@ -37,7 +37,7 @@ COPY --from=vscode-env /root/.vscode/extensions /root/.code-server/extensions
 COPY scripts /root/scripts
 
 RUN apt-get update && \
-	apt-get install curl gnupg2 ca-certificates && \
+	apt-get install -y curl gnupg2 ca-certificates && \
 	apt-get install -y locales && \
 	locale-gen en_US.UTF-8
 # Locale Generation
