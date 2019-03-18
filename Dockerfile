@@ -45,6 +45,7 @@ RUN apt-get update && \
 ENV LANG=en_US.UTF-8
 
 # Install langauge toolchains
+RUN sh /root/scripts/install-tools-nodejs.sh
 RUN sh /root/scripts/install-tools-dev.sh
 RUN sh /root/scripts/install-tools-golang.sh
 RUN sh /root/scripts/install-tools-cpp.sh
