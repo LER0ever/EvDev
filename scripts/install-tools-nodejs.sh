@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Node.js
-curl -sL https://deb.nodesource.com/setup_11.x | bash -
+curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Install Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export GO_VERSION=1.12
+export GO_VERSION=1.14
 export GOPATH=/usr/local/go-packages
 export GO_ROOT=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin
