@@ -1,7 +1,7 @@
 # Just use the code-server docker binary
 FROM codercom/code-server as coder-binary
 
-FROM ubuntu:18.10 as vscode-env
+FROM ubuntu:19.04 as vscode-env
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Install the actual VSCode to download configs and extensions
@@ -27,7 +27,7 @@ RUN code -v --user-data-dir /root/.config/Code && \
 	sh install-vscode-extensions.sh ../extensions.list
 
 # The production image for code-server
-FROM ubuntu:18.10
+FROM ubuntu:19.04
 MAINTAINER Everette Rong (https://rongyi.blog)
 WORKDIR /project
 COPY --from=coder-binary /usr/local/bin/code-server /usr/local/bin/code-server
